@@ -1,0 +1,198 @@
+	<!DOCTYPE html>
+		<html>
+			<head>
+				<title>
+					Dropdown_Menu
+				</title>
+				<style>
+		
+					.menu {
+						display: block;
+						z-index: 999999;
+						background-color: #343434;
+						
+						
+							}
+					.menu li {
+					  display: inline-block;
+					  position: relative;
+					 
+					  
+					}
+					.menu li.dropdown:hover > .submenu {
+					  display: block;
+					}
+					.menu li a {
+					  display: block;
+					  padding: 12px 8px;
+					  background-color: #343434;
+					  color: white;
+					  padding-right: 40px;
+					   text-decoration: none; 
+					}
+					.menu li.dropdown > a::after {
+					  content: "\e259";
+					  font-family: 'Glyphicons Halflings';
+					  font-style: normal;
+					  font-weight: 400;
+					  margin-left: 8px;
+					  font-size: 10px;
+					}
+					.menu li a::before {
+					  font-family: 'Glyphicons Halflings';
+					  font-style: normal;
+					  font-weight: 400;
+					  margin-right: 8px;
+					 
+					}
+					.menu li a:hover {
+					  background-color: grey;
+					}
+
+					.menu .submenu {
+					  display: none;
+					}
+					.submenu {
+					  margin: 0px;
+					  padding: 0px;
+					  position: absolute;
+					  left: 0px;
+					  list-style-type: none;
+					  display: block;
+					  width: 200px;
+					  z-index: 9;
+					}
+					.submenu li {
+					  display: block;
+					}
+					.submenu li a {
+					  display: block;
+					  background-color: black;
+					  color: white;
+					  padding: 8px 6px;
+					  margin-bottom: 1px;
+					  text-decoration: none; 
+					}
+					.menu .submenu > li.dropdown:hover > .submenu {
+					  display: block;
+					}
+
+					.menu .submenu .submenu {
+					  position: absolute;
+					  left: 200px;
+					  top: 0px;
+					}
+
+					.submenu li.dropdown > a:after {
+					  content: "\e258";
+					  font-family: 'Glyphicons Halflings';
+					  font-style: normal;
+					  font-weight: 400;
+					  margin-left: 8px;
+					  font-size: 10px;
+					}
+
+				</style>
+			</head>
+			<body>
+				<ul class="menu">
+					<li><a href="">1</a></li>
+							<li class="dropdown">
+						<a href="">2</a>
+							
+							<ul class="submenu">
+							<li>
+							<a href="">2.1</a>
+							</li>  
+							<li>
+							<a href="">2.2</a>
+							</li>  
+							<li>
+							<a href="">2.3</a>
+							</li>  
+												<li class="dropdown">
+												<a href="">2.4</a>
+												
+													<ul class="submenu">	
+													<li>
+													<a href="">2.4.1</a>
+													</li>
+													<li>
+													<a href="">2.4.2</a>
+													</li>
+														<li>
+													<a href="">2.4.3</a>
+													</li>
+												
+																			<li class="dropdown">
+																			<a href="">2.4.4</a>
+																			<ul class="submenu">
+																			
+																			<a href="">2.4.4.1</a>
+																
+																			</li>
+																			
+													
+																										<li class="dropdown">
+																										<a href="">2.4.4.2</a>
+																										
+																										<ul class="submenu">
+																										
+																										<li>
+																										<a href="">2.4.4.2.1</a>
+																										</li>
+																										<li>
+																										<a href="">2.4.4.2.2</a>
+																										</li>
+																										<li>
+													<li class="dropdown">
+													<a href="">2.4.4.2.3</a>
+													<ul class="submenu">
+													<li>
+														<a href="">2.4.4.2.3.1</a>
+													</li>
+													<li>
+														<a href="">2.4.4.2.3.2</a>
+													</li>
+													<li>
+														<a href="">2.4.4.2.3.3</a>
+													</li>
+													<li>
+														<a href="">2.4.4.2.3.4</a>
+													</li>
+													</ul>
+
+
+																										</li>
+																										<li>
+																										<a href="">2.4.4.2.4</a>
+																										</li>
+																										
+																										</ul>
+																			<li><a href="">2.4.4.3</a></li>
+													
+													
+								
+		           
+		            </ul>
+		          </li>
+		          <li>
+		           
+		          
+		        </ul>
+												<li>
+												<a href="">2.5</a>
+												</li>  
+												
+		     
+													
+		    </ul>
+			
+		
+		  <li><a href="">3</a></li>
+		  <li><a href="">4</a></li>
+		  <li><a href="">5</a></li>
+		
+
+		</body>
+		</html>
