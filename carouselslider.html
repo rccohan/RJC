@@ -1,27 +1,27 @@
 <!DOCTYPE html>
     <html>
         <head>
-                <title>My Gallery Slider</title>
-                <style>
-                         html,body{
+            <title>My Slider Gallery</title>
+            <style>
+                        html,body{
                             padding: 10px 0 0 0;
                             margin: 0;
-              
+                            background-color: black;
                         }
                         .galleryContainer{
                             width: 100%;
                             height: 500px;
                             max-width: 1000px;
                             margin: auto;
-                            margin-top: 50px;
+                            padding: 10px;
                         }
                         .galleryContainer .slideShowContainer{
                             width: 100%;
-                            height: 100%;
+                            height: 90%;
                             overflow: hidden;
+                            background-color: gainsboro;
                             position: relative;
                         }
-                        
                         .galleryContainer .slideShowContainer .imageHolder{
                             width: 100%;
                             height: 100%;
@@ -32,7 +32,10 @@
                             width: 100%;
                             height: 100%;
                         }
-    
+                        .galleryContainer .slideShowContainer .imageHolder .captionText{
+                            display: none;
+                        }
+
                         .galleryContainer .slideShowContainer .leftArrow,.galleryContainer .slideShowContainer .rightArrow{
                             width: 50px;
                             background: #00000036;
@@ -60,9 +63,9 @@
                         }
                         .galleryContainer .arrow{
                             display: inline-block;
-                            border: 3px solid white;
-                            width: 10px;
-                            height: 10px;
+                            border: 5px solid white;
+                            width: 20px;
+                            height: 20px;
                             border-left: none;
                             border-bottom: none;
                             margin: auto;
@@ -79,35 +82,33 @@
                             transform: rotateZ(45deg);
                         }
                         .galleryContainer #dotsContainer{
-                    
-                            height: 5%;
+                            width: 100%;
+                            height: 10%;
                             text-align: center;
+                            padding-top: 410px;
                             box-sizing: border-box;
-                             position: absolute;
-                             bottom: 20px;
-                             width: 100%;
-                             text-align: center;
-
-                      }
+                            position: relative;
+                        }
                         .galleryContainer #dotsContainer .dots{
                             display: inline-block;
-                            width: 15px;
-                            height: 15px;
+                            width: 20px;
+                            height: 20px;
                             border-radius: 50%;
                             margin-left: 5px;
-                            background-color: #fafafa;
-                            opacity: 0.4;
+                            background-color: #bbb;
                             cursor: pointer;
                             transition:background-color 0.5s;
-                            margin-left: 10px;
+                             margin-left: 10px;
                         }
                         .galleryContainer #dotsContainer .dots:first-child{
                             margin-left: 0;
+                            width:20px; 
+                            height:20px;
                         }
                         .galleryContainer #dotsContainer .dots:hover,.galleryContainer #dotsContainer .dots.active{
-                            background-color: white;
-                            opacity: 1;
+                            background-color: black;
                         }
+
                         .galleryContainer .moveLeftCurrentSlide{
                             animation-name: moveLeftCurrent;
                             animation-duration: 0.5s;
@@ -129,7 +130,6 @@
                             from {margin-left: 100%;opacity: 1;}
                             to {margin-left: 0%;opacity: 1;}
                         }
-
                         .galleryContainer .moveRightCurrentSlide{
                             animation-name: moveRightCurrent;
                             animation-duration: 0.5s;
@@ -151,33 +151,38 @@
                             to {margin-left: 0%;opacity: 1;}
                         }
                 </style>
-</head>
-<body>
-    <div class=".galleryContainer">
-        <div class="slideShowContainer">
-                <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
-                <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
-                <div class="imageHolder">
-                    <img src="pexels-photo-917494.jpeg">
-                </div>
-                <div class="imageHolder">
-                    <img src="IMG_0664.jpg">
-                </div>
-                <div class="imageHolder">
-                    <img src="IMG_0661.jpg">
-                </div>
-                <div class="imageHolder">
-                    <img src="0656.jpg">
-                </div>
-                <div class="imageHolder">
-                    <img src="IMG_0651.jpg">
-                </div>
-                <div id="dotsContainer"></div>
+    </head>
+    <body>
+            <div class="galleryContainer">
+                 <div class="slideShowContainer">
+                    <div id="playPause" onclick="playPauseSlides()"></div>
+                    <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+                    <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+             <div class="imageHolder">
+                <img src="images/pexels-photo-917494.jpeg">1366X768
             </div>
-            
-        </div>
-        <script>
-                function initGallery(){
+            <div class="imageHolder">
+                <img src="IMG_0656.jpg">
+            </div>
+            <div class="imageHolder">
+                <img src="MG_0661.jpg">
+            </div>
+            <div class="imageHolder">
+                <img src="images/IMG_0656.jpg">
+            </div>
+            <div class="imageHolder">
+                <img src="IMG_0653.jpg">
+            </div>
+            <div class="imageHolder">
+                <img src="IMG_0651.jpg">
+            </div>
+                 <div id="dotsContainer"></div>
+            </div>   
+</div>
+<script>
+
+
+            function initGallery(){
                     slideIndex = 0;
                     slides=document.getElementsByClassName("imageHolder");
                     slides[slideIndex].style.opacity=1;
@@ -193,72 +198,67 @@
                         dot.setAttribute("onclick","moveSlide("+i+")");
                         dots.push(dot);
                     }
-                    dots[slideIndex].classList.add("active");
-                }
-
-                initGallery();
-                function plusSlides(n) {
-                    moveSlide(slideIndex+n);
-                }
-
-                function moveSlide(n){
-                    var i;
-                    var current,next;
-                    var moveSlideAnimClass={
-                          forCurrent:"",
-                          forNext:""
-                    };
-                    var slideTextAnimClass;
-                    if(n>slideIndex) {
-                        if(n >= slides.length){n=0;}
-                        moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
-                        moveSlideAnimClass.forNext="moveLeftNextSlide";
-                        slideTextAnimClass="slideTextFromTop";
-                    }else if(n<slideIndex){
-                        if(n<0){n=slides.length-1;}
-                        moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
-                        moveSlideAnimClass.forNext="moveRightPrevSlide";
-                        slideTextAnimClass="slideTextFromBottom";
+                        dots[slideIndex].classList.add("active");
                     }
-
-                    if(n!=slideIndex){
-                        next = slides[n];
-                        current=slides[slideIndex];
-                        for (i = 0; i < slides.length; i++) {
-                            slides[i].className = "imageHolder";
-                            slides[i].style.opacity=0;
-                            dots[i].classList.remove("active");
+            initGallery();
+                    function plusSlides(n) {
+                        moveSlide(slideIndex+n);
+                    }
+                    function moveSlide(n){
+                        var i;
+                        var current,next;
+                        var moveSlideAnimClass={
+                              forCurrent:"",
+                              forNext:""
+                        };
+                        var slideTextAnimClass;
+                        if(n>slideIndex) {
+                            if(n >= slides.length){n=0;}
+                            moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
+                            moveSlideAnimClass.forNext="moveLeftNextSlide";
+                            slideTextAnimClass="slideTextFromTop";
+                        }else if(n<slideIndex){
+                            if(n<0){n=slides.length-1;}
+                            moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
+                            moveSlideAnimClass.forNext="moveRightPrevSlide";
+                            slideTextAnimClass="slideTextFromBottom";
                         }
-                        current.classList.add(moveSlideAnimClass.forCurrent);
-                        next.classList.add(moveSlideAnimClass.forNext);
-                        dots[n].classList.add("active");
-                        slideIndex=n;
-                        captionText.style.display="none";
-                        captionText.className="captionText "+slideTextAnimClass;
-                        captionText.innerText=slides[n].querySelector(".captionText").innerText;
-                        captionText.style.display="block";
-                    }
-               }
 
-                    var timer=null;
+                        if(n!=slideIndex){
+                            next = slides[n];
+                            current=slides[slideIndex];
+                            for (i = 0; i < slides.length; i++) {
+                                slides[i].className = "imageHolder";
+                                slides[i].style.opacity=0;
+                                dots[i].classList.remove("active");
+                            }
+                            current.classList.add(moveSlideAnimClass.forCurrent);
+                            next.classList.add(moveSlideAnimClass.forNext);
+                            dots[n].classList.add("active");
+                            slideIndex=n;
+                        }
+
+                    }
+            var timer=null;
                     function setTimer(){
-                        timer=setInterval(function () {
-                            plusSlides(1) ;
-                        },3000);
-                    }
-
-                    setTimer();
-                    function playPauseSlides() {
-                        var playPauseBtn=document.getElementById("playPause");
-                        if(timer==null){
-                            setTimer();
-                            playPauseBtn.style.backgroundPositionY="0px"
-                        }else{
-                            clearInterval(timer);
-                            timer=null;
-                            playPauseBtn.style.backgroundPositionY="-33px"
+                            timer=setInterval(function () {
+                                plusSlides(1) ;
+                            },3000);
                         }
-                    }
-        </script>
-    </body>
-</html>
+                        setTimer();
+                        function playPauseSlides() {
+                            var playPauseBtn=document.getElementById("playPause");
+                            if(timer==null){
+                                setTimer();
+                                playPauseBtn.style.backgroundPositionY="0px"
+                            }else{
+                                clearInterval(timer);
+                                timer=null;
+                                playPauseBtn.style.backgroundPositionY="-33px"
+                            }
+                        }
+         </script>
+         </body>
+    </html>
+
+
