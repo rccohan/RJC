@@ -239,14 +239,14 @@
                         }
 
                     }
-            var timer=null;
+                    var timer=null;
                     function setTimer(){
                             timer=setInterval(function () {
                                 plusSlides(1) ;
                             },3000);
                         }
                         setTimer();
-                        function playPauseSlides() {
+                    function playPauseSlides() {
                             var playPauseBtn=document.getElementById("playPause");
                             if(timer==null){
                                 setTimer();
